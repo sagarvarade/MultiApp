@@ -16,15 +16,32 @@ This will contain scripts that can be executed from eclipse only
 
 # Developement 
 Projects :
-	1. SpringApp1 : Demo Spring Boot Application
-	2. SpringApp2 : Demo Spring Boot Application
-	3. AppRunner  : This has one main method on running AppRunner main method we will get directory (deployDirectory), & runApps.bat
-					This code will copy all the jars from target folder to deployDirectory and re-generate that runApps.bat
-    4. ConfigServer : This app will act as a config server for all this microservices
-    5. ConfigServerValues : This folder contains the values required for ConfigServer application
+	1. SpringApp1 : Demo Spring Boot Application <br>
+	2. SpringApp2 : Demo Spring Boot Application <br>
+	3. AppRunner  : This has one main method on running AppRunner main method we will get directory (deployDirectory), & runApps.bat <br>
+					This code will copy all the jars from target folder to deployDirectory and re-generate that runApps.bat <br>
+    4. ConfigServer : This app will act as a config server for all this microservices <br>
+    5. ConfigServerValues : https://github.com/sagarvarade/ConfigServerValues <br>
+    					  : For Config server valus we are depend on this repository <br>
     
-Ports :
-	ConfigSever : 8888
-	SpringApp1  : 8081
-	SpringApp2  : 8082
+Ports :  <br>
+	ConfigSever : 8888	<br>
+	SpringApp1  : 8081  <br>
+	SpringApp2  : 8082  <br>
+ 
+1. <br>
+<br>
+2.<br>
+<br>
+3. <br>
+<br>
+4. <br>
+<br>
+5.ConfigServerValues : This has below URLs' <br>
+http://localhost:8888/SpringApp1/default  <br>
+http://localhost:8888/SpringApp1/dev      <br>
+<br>
+http://localhost:8888/SpringApp2/default  <br>
+http://localhost:8888/SpringApp2/dev      <br>
+
  

@@ -13,7 +13,6 @@
 		<module>SpringApp2</module>
 		<!-- <module>AppRunner</module> -->
 		<module>ConfigServer</module>
-		<!-- <module>ConfigServerValues</module> -->
 	</modules>
 
 	<parent>

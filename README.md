@@ -12,7 +12,7 @@ So build will be easy and one point for project.
 # Scripts Folder
 This will contain scripts that can be executed from eclipse only
 1. MultiApp.launch  : Clean Install maven
-2. AppRunnner.launch: Copy Jars and build runApps.bat
+2. AppRunnner.launch: Copy Jars and build runApps.
 
 # Developement 
 Projects :
@@ -20,4 +20,11 @@ Projects :
 	2. SpringApp2 : Demo Spring Boot Application
 	3. AppRunner  : This has one main method on running AppRunner main method we will get directory (deployDirectory), & runApps.bat
 					This code will copy all the jars from target folder to deployDirectory and re-generate that runApps.bat
-					
+    4. ConfigServer : This app will act as a config server for all this microservices
+    5. ConfigServerValues : This folder contains the values required for ConfigServer application
+    
+Ports :
+	ConfigSever : 8888
+	SpringApp1  : 8081
+	SpringApp2  : 8082
+ 

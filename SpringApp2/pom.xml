@@ -4,12 +4,13 @@
 	<parent>
 		<groupId>MultiApp</groupId>
 		<artifactId>MultiApp</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
 	<groupId>com.SpringApp2</groupId>
 	<artifactId>SpringApp2</artifactId>
 	<name>SpringApp2</name>
 	<description>Demo project for Spring Boot</description>
+	<version>${SpringApp2.version}</version>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

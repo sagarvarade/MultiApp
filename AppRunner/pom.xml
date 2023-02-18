@@ -5,14 +5,15 @@
 	<parent>
 		<groupId>MultiApp</groupId>
 		<artifactId>MultiApp</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
 	<artifactId>AppRunner</artifactId>
 	<packaging>jar</packaging>
 	<description>Demo project for Spring Boot</description>
-		<properties>
-			<java.version>17</java.version>
-		</properties>
+	<properties>
+		<java.version>17</java.version>
+	</properties>
+	<version>${AppRunner.version}</version>
 	<dependencies>
 		<!-- <dependency>
 			<groupId>com.SpringApp1</groupId>

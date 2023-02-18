@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>MultiApp</groupId>
 	<artifactId>MultiApp</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>pom</packaging>
 	<name>MultiApp</name>
 	<description>MultiApp</description>
@@ -22,6 +22,9 @@
 	</parent>
 	<properties>
 		<java.version>17</java.version>
+		<SpringApp1.version>1.0.1</SpringApp1.version>
+		<SpringApp2.version>1.0.1</SpringApp2.version>
+		<AppRunner.version>1.0.1</AppRunner.version>
 	</properties>
 	<dependencies>
 		<dependency>

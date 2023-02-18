@@ -12,6 +12,8 @@
 		<module>SpringApp1</module>
 		<module>SpringApp2</module>
 		<!-- <module>AppRunner</module> -->
+		<module>ConfigServer</module>
+		<!-- <module>ConfigServerValues</module> -->
 	</modules>
 
 	<parent>
@@ -22,9 +24,14 @@
 	</parent>
 	<properties>
 		<java.version>17</java.version>
+		<spring-cloud.version>2022.0.1</spring-cloud.version>
+
 		<SpringApp1.version>1.0.1</SpringApp1.version>
 		<SpringApp2.version>1.0.1</SpringApp2.version>
 		<AppRunner.version>1.0.1</AppRunner.version>
+		<ConfigServer.version>1.0.1</ConfigServer.version>
+
+
 	</properties>
 	<dependencies>
 		<dependency>
@@ -37,6 +44,19 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>

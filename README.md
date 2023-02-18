@@ -23,8 +23,10 @@ Projects :
     4. ConfigServer : This app will act as a config server for all this microservices <br>
     5. ConfigServerValues : https://github.com/sagarvarade/ConfigServerValues <br>
     					  : For Config server valus we are depend on this repository <br>
+    6. NamingServer       : this is for Naming the severs
     
 Ports :  <br>
+	NamingServer  : 8082  <br>
 	ConfigSever : 8888	<br>
 	SpringApp1  : 8081  <br>
 	SpringApp2  : 8082  <br>

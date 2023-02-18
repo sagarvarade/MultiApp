@@ -7,30 +7,21 @@
 		<artifactId>MultiApp</artifactId>
 		<version>1.0.0</version>
 	</parent>
-	<groupId>com.SpringApp1</groupId>
-	<artifactId>SpringApp1</artifactId>
-	<name>SpringApp1</name>
-	<version>${SpringApp1.version}</version>
-	<description>Demo project for Spring Boot</description>
-	<properties>
-		<java.version>17</java.version>
-	</properties>
-	<packaging>jar</packaging>
+	<artifactId>ApiGateway</artifactId>
+	<groupId>com.ApiGateway</groupId>
+	<name>ApiGateway</name>
+	<version>${ApiGateway.version}</version>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-gateway</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
+
 	</dependencies>
 
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 </project>

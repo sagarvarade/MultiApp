@@ -9,10 +9,12 @@
 	<name>MultiApp</name>
 	<description>MultiApp</description>
 	<modules>
+		<module>NamingServer</module>
+		<module>ConfigServer</module>
+		<module>ApiGateway</module>
 		<module>SpringApp1</module>
 		<module>SpringApp2</module>
 		<!-- <module>AppRunner</module> -->
-		<module>ConfigServer</module>
 	</modules>
 
 	<parent>
@@ -24,12 +26,15 @@
 	<properties>
 		<java.version>17</java.version>
 		<spring-cloud.version>2022.0.1</spring-cloud.version>
+		
+		<NamingServer.version>1.0.1</NamingServer.version>
+		<ConfigServer.version>1.0.1</ConfigServer.version>
+		<ApiGateway.version>1.0.1</ApiGateway.version>
+		
 		<SpringApp1.version>1.0.1</SpringApp1.version>
 		<SpringApp2.version>1.0.1</SpringApp2.version>
 		<AppRunner.version>1.0.1</AppRunner.version>
-		<ConfigServer.version>1.0.1</ConfigServer.version>
-
-
+		
 	</properties>
 	<dependencies>
 		<dependency>

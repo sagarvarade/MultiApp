@@ -37,9 +37,9 @@ public class MakeRunnable {
         SortedMap<String, String> sortedMap = new TreeMap<String,String>();
         
         for (Entry<String, String> entry : jarsWithPath.entrySet()) {
-        	String x=entry.getKey().split("\\.")[1];
+        	String x=entry.getKey().split("\\.")[0];
         	sortedMap.put(x, entry.getValue());
-        }
+        } 
 		
 		for (Entry<String, String> entry : sortedMap.entrySet()) {
 			String jarName = entry.getValue().split("target")[1].replace("\\", "");
@@ -90,16 +90,21 @@ public class MakeRunnable {
 	}
 
 	private static boolean copyJarsTodDeployDirectoryFolder(Map<String, String> jarsWithPath, String parentFolder) {
-		if (new File(parentFolder + "/" + DEPLOY_DIRECTORY).exists()) {
-			new File(parentFolder + "/" + DEPLOY_DIRECTORY).exists();
+		File folderPath=new File(parentFolder + "/" + DEPLOY_DIRECTORY);
+		if(folderPath.exists())
+		{
+			folderPath.delete();
 		}
-		for (Entry<String, String> entry : jarsWithPath.entrySet()) {
-			String file = entry.getValue();
-			try {
-				FileUtils.copyFileToDirectory(new File(file), new File(parentFolder + "/" + DEPLOY_DIRECTORY));
-			} catch (IOException e) {
-				e.printStackTrace();
-				return false;
+		if(folderPath.mkdir())
+		{
+			for (Entry<String, String> entry : jarsWithPath.entrySet()) {
+				String file = entry.getValue();
+				try {
+					FileUtils.copyFileToDirectory(new File(file), new File(parentFolder + "/" + DEPLOY_DIRECTORY));
+				} catch (IOException e) {
+					e.printStackTrace();
+					return false;
+				}
 			}
 		}
 		return true;

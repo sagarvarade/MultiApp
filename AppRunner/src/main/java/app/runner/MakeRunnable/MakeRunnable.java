@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 import org.apache.commons.io.FileUtils;
 
@@ -30,7 +32,16 @@ public class MakeRunnable {
 	private static void createBatchFileForRunningThisApps(Map<String, String> jarsWithPath, String parentFolder) {
 		StringBuilder fileString = new StringBuilder();
 		fileString.append("@echo off\n");
-		for (Entry<String, String> entry : jarsWithPath.entrySet()) {
+		
+
+        SortedMap<String, String> sortedMap = new TreeMap<String,String>();
+        
+        for (Entry<String, String> entry : jarsWithPath.entrySet()) {
+        	String x=entry.getKey().split("\\.")[0];
+        	sortedMap.put(x, entry.getValue());
+        } 
+		
+		for (Entry<String, String> entry : sortedMap.entrySet()) {
 			String jarName = entry.getValue().split("target")[1].replace("\\", "");
 			fileString
 					.append("start /b \"" + entry.getKey() + "\" java -jar " + DEPLOY_DIRECTORY + "/" + jarName + "\n");
@@ -64,7 +75,9 @@ public class MakeRunnable {
 				String fileName = fl.getName();
 				String filePath = fl.getCanonicalPath();
 				if (fileName.endsWith(".jar") && filePath.indexOf("target") > 0 && fileName.indexOf("AppRunner")<0)
+				{
 					jarsMap.put(fileName, filePath);
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -77,16 +90,21 @@ public class MakeRunnable {
 	}
 
 	private static boolean copyJarsTodDeployDirectoryFolder(Map<String, String> jarsWithPath, String parentFolder) {
-		if (new File(parentFolder + "/" + DEPLOY_DIRECTORY).exists()) {
-			new File(parentFolder + "/" + DEPLOY_DIRECTORY).exists();
+		File folderPath=new File(parentFolder + "/" + DEPLOY_DIRECTORY);
+		if(folderPath.exists())
+		{
+			folderPath.delete();
 		}
-		for (Entry<String, String> entry : jarsWithPath.entrySet()) {
-			String file = entry.getValue();
-			try {
-				FileUtils.copyFileToDirectory(new File(file), new File(parentFolder + "/" + DEPLOY_DIRECTORY));
-			} catch (IOException e) {
-				e.printStackTrace();
-				return false;
+		if(folderPath.mkdir())
+		{
+			for (Entry<String, String> entry : jarsWithPath.entrySet()) {
+				String file = entry.getValue();
+				try {
+					FileUtils.copyFileToDirectory(new File(file), new File(parentFolder + "/" + DEPLOY_DIRECTORY));
+				} catch (IOException e) {
+					e.printStackTrace();
+					return false;
+				}
 			}
 		}
 		return true;

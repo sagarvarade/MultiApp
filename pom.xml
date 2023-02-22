@@ -27,12 +27,12 @@
 		<java.version>17</java.version>
 		<spring-cloud.version>2022.0.1</spring-cloud.version>
 		
-		<NamingServer.version>1.0.1</NamingServer.version>
-		<ConfigServer.version>1.0.1</ConfigServer.version>
-		<ApiGateway.version>1.0.1</ApiGateway.version>
+		<NamingServer.version>1.1.1</NamingServer.version>
+		<ConfigServer.version>1.2.1</ConfigServer.version>
+		<ApiGateway.version>1.3.1</ApiGateway.version>
 		
-		<SpringApp1.version>1.0.1</SpringApp1.version>
-		<SpringApp2.version>1.0.1</SpringApp2.version>
+		<SpringApp1.version>1.4.1</SpringApp1.version>
+		<SpringApp2.version>1.5.1</SpringApp2.version>
 		<AppRunner.version>1.0.1</AppRunner.version>
 		
 	</properties>

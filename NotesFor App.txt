@@ -1,0 +1,16 @@
+Multi app ideas:
+1. zero tolerance.
+   1. One microservice can not call to other ms, they must have share they are valid and and authorised for communication.
+	  Each request will consist of user token and it will be authorised by Authentication application ,
+	  If auth app says yes this is valid user then ms2 will share one token with caller, and caller will save for future communiction
+	  From the next request ms1 will send that token with user token to the ms2 , ms2 reverify from its data yes this is valid
+	  This will save round trip to auth server.
+	  each ms will share those tokens in there database,each will have some expiry time.
+	  On expiray each ms has to reverify with auth server.
+2. All the communiction will be happend by Rsocket only and some request may need https
+3. Some request may need HTTPS2
+4. While sharing data in between two microservices , we are sharing payload as byte stream in json format , org.json Object
+5. If 4th point not used ,then we may not be able to leaverge hibernate application 
+6. Make it possible to run some crud queries on application start up.
+
+Hope find some time to implement this.

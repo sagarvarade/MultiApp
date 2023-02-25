@@ -14,7 +14,7 @@
 		<module>ApiGateway</module>
 		<module>SpringApp1</module>
 		<module>SpringApp2</module>
-		<!-- <module>AppRunner</module> -->
+		<module>AppRunner</module>
 	</modules>
 
 	<parent>

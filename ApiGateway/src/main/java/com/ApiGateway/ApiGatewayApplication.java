@@ -1,4 +1,4 @@
-package com.apigateway;
+package com.ApiGateway;
 
 
 import org.springframework.boot.SpringApplication;

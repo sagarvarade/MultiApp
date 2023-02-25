@@ -16,7 +16,7 @@ This will contain scripts that can be executed from eclipse only
 2. AppRunnner.launch: Copy Jars and build runApps.
 
 # Development 
-Projects :
+Projects : 
 	1. NamingServer       : This is for Naming the severs
 	2. ConfigServer : This application will act as a configuration server for all this micro-services 
     3. ConfigServerValues : https://github.com/sagarvarade/ConfigServerValues 

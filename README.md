@@ -27,7 +27,7 @@ Projects :
 	
 	7. AppRunner  : This has one main method on running AppRunner main method we will get directory (deployDirectory), & runApps.bat 
 					This code will copy all the jars from target folder to deployDirectory and re-generate that runApps.bat 
-    
+    8. Authentication : Auth Application
 Ports :  
 	NamingServer  : 8761  
 	ConfigSever   : 8888
@@ -35,6 +35,7 @@ Ports :
 	SpringApp1    : 8081  
 	SpringApp2    : 8082  
  	AppRunner     : Not required port
+ 	Authentication : 8200
 
 Project In brief :
 This project is Maven multi module type of project, Here I am trying to explore services necessary for Spring Microserivices.

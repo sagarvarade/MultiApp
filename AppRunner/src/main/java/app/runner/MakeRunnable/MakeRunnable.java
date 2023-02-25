@@ -2,6 +2,7 @@ package app.runner.MakeRunnable;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -37,10 +38,9 @@ public class MakeRunnable {
         SortedMap<String, String> sortedMap = new TreeMap<String,String>();
         
         for (Entry<String, String> entry : jarsWithPath.entrySet()) {
-        	String x=entry.getKey().split("\\.")[0];
+        	String x=entry.getValue().split("target")[1].replace("\\", "").split("-")[1].split("\\.")[0];
         	sortedMap.put(x, entry.getValue());
         } 
-		
 		for (Entry<String, String> entry : sortedMap.entrySet()) {
 			String jarName = entry.getValue().split("target")[1].replace("\\", "");
 			fileString

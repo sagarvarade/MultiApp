@@ -55,5 +55,24 @@ To run :
 
 To Kill Port:
 killPort.bat can be used to kill port.
+
+
+URLS :
+Get  : http://localhost:8761/  : For Naming Server
+
+Post : http://localhost:8765/authentication/products/authenticate  body : {"username":"sagar","password":"sagar"} , For Api gateway login to db
+
+Get  : Spring App 1. http://localhost:8081/springapp1/hello1
+Get  : Spring App 2. http://localhost:8082/springapp2/hello2
+
+Get  : Spring App 1. http://localhost:8765/springapp1/springapp1/hello1  : Through API gateway
+Get  : Spring App 2. http://localhost:8765/springapp2/springapp2/hello2  : Through API gateway
+
+Config Server URLS : http://localhost:8888/springapp1/springapp1
+				   : http://localhost:8888/springapp2/springapp2	
+
+
+
 </pre>
+ 
  

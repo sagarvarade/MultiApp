@@ -16,6 +16,7 @@
 		<module>SpringApp2</module>
 		<module>AppRunner</module>
 		<module>authentication</module>
+		<module>multiappHTTP</module>
 	</modules>
 
 	<parent>
@@ -32,11 +33,11 @@
 		<ConfigServer.version>2.1.1</ConfigServer.version>
 		<ApiGateway.version>3.1.1</ApiGateway.version>
 		
-		
 		<SpringApp1.version>4.1.1</SpringApp1.version>
 		<SpringApp2.version>5.1.1</SpringApp2.version>
 		<AppRunner.version>6.1.1</AppRunner.version>
 		<Authentication.version>7.1.1</Authentication.version>
+		<multiappHTTP.version>8.1.1</multiappHTTP.version>
 	</properties>
 	<dependencies>
 		<dependency>

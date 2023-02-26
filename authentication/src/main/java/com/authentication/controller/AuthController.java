@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,8 +24,8 @@ import com.authentication.service.JwtService;
 import com.authentication.service.ProductService;
 
 @RestController
-@RequestMapping("/products")
-public class ProductController {
+@RequestMapping("/auth")
+public class AuthController {
 
     @Autowired
     private ProductService service;
@@ -69,5 +71,13 @@ public class ProductController {
         }
     	
         
+    }
+    @GetMapping("/testtoken")
+    public String index() {
+    	Authentication auth=SecurityContextHolder.getContext().getAuthentication();
+    	if(!(auth instanceof AnonymousAuthenticationToken)) {
+    		return "TOKEN_IS_VALID";
+    	}
+        return "TOKEN_NOT_VALID";
     }
 }

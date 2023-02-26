@@ -2,7 +2,6 @@ package app.runner.MakeRunnable;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -45,6 +44,7 @@ public class MakeRunnable {
 			String jarName = entry.getValue().split("target")[1].replace("\\", "");
 			fileString
 					.append("start /b \"" + entry.getKey() + "\" java -jar " + DEPLOY_DIRECTORY + "/" + jarName + "\n");
+			fileString.append("timeout 5 > NUL \n");
 		}
 		fileString.append("pause\n");
 		File flDeployBatParent = new File(parentFolder + "/" + "runApps.bat");

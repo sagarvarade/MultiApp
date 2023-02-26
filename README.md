@@ -60,14 +60,19 @@ killPort.bat can be used to kill port.
 URLS :
 Get  : http://localhost:8761/  : For Naming Server
 
+http://localhost:8765/authentication/auth/testtoken : Token verfication for API Gateway
+
 Post : http://localhost:8765/authentication/products/authenticate  body : {"username":"sagar","password":"sagar"} , For Api gateway login to db
+
+Once you get token from login , you need to send that token for each next request call to any web service
 
 Get  : Spring App 1. http://localhost:8081/springapp1/hello1
 Get  : Spring App 2. http://localhost:8082/springapp2/hello2
 
-Get  : Spring App 1. http://localhost:8765/springapp1/springapp1/hello1  : Through API gateway
-Get  : Spring App 2. http://localhost:8765/springapp2/springapp2/hello2  : Through API gateway
-
+Get  : Spring App 1. http://localhost:8765/springapp1/helloworld/hello1  : Through API gateway
+Get  : Spring App 2. http://localhost:8765/springapp2/helloworld/hello2  : Through API gateway
+					 
+					 
 Config Server URLS : http://localhost:8888/springapp1/springapp1
 				   : http://localhost:8888/springapp2/springapp2	
 

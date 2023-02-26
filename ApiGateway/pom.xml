@@ -11,9 +11,7 @@
 	<artifactId>ApiGateway</artifactId>
 	<groupId>com.ApiGateway</groupId>
 	<name>ApiGateway</name>
-
 	<version>3.1.1</version>
-
 	<properties>
 		<java.version>17</java.version>
 		<spring-cloud.version>2021.0.1</spring-cloud.version>
@@ -31,7 +29,6 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -57,7 +54,7 @@
 	</dependencyManagement>
 	<build>
 		<plugins>
-			<plugin>
+			<!--<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
@@ -66,12 +63,11 @@
 					</image>
 					<pullPolicy>IF_NOT_PRESENT</pullPolicy>
 				</configuration>
-			</plugin>
-<!-- 			<plugin>
+			</plugin>-->
+			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
- -->		</plugins>
+		</plugins>
 	</build>
-
 </project>

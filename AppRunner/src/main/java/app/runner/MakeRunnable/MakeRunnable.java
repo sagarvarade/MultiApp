@@ -37,14 +37,14 @@ public class MakeRunnable {
         SortedMap<String, String> sortedMap = new TreeMap<String,String>();
         
         for (Entry<String, String> entry : jarsWithPath.entrySet()) {
-        	String x=entry.getKey().split("\\.")[0];
+        	String x=entry.getValue().split("target")[1].replace("\\", "").split("-")[1].split("\\.")[0];
         	sortedMap.put(x, entry.getValue());
         } 
-		
 		for (Entry<String, String> entry : sortedMap.entrySet()) {
 			String jarName = entry.getValue().split("target")[1].replace("\\", "");
 			fileString
 					.append("start /b \"" + entry.getKey() + "\" java -jar " + DEPLOY_DIRECTORY + "/" + jarName + "\n");
+			fileString.append("timeout 5 > NUL \n");
 		}
 		fileString.append("pause\n");
 		File flDeployBatParent = new File(parentFolder + "/" + "runApps.bat");

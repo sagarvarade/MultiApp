@@ -12,14 +12,14 @@ import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
-
+import com.HTTPClient.Implementations.HTTPClientImpl;
 import reactor.core.publisher.Mono;
 
 @Component
 public class LoggingFilter implements GlobalFilter {
 
 	private Logger logger = LoggerFactory.getLogger(LoggingFilter.class);
-
+	HTTPClientImpl http=new HTTPClientImpl();
 	@Override
 	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 		logger.info("Path ,{} ", exchange.getRequest().getPath());

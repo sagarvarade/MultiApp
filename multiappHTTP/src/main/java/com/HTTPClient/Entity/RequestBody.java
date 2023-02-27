@@ -1,11 +1,12 @@
 package com.HTTPClient.Entity;
 
 import java.net.URLEncoder;
-import java.net.http.HttpRequest;
 import java.net.http.HttpClient.Version;
+import java.net.http.HttpRequest;
 import java.net.http.HttpRequest.BodyPublisher;
 import java.nio.charset.StandardCharsets;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 import com.HTTPClient.Interfaces.HTTPMethods;
@@ -17,6 +18,8 @@ public class RequestBody {
 	private HTTPMethods method;
 	private BodyPublisher bodyPublisher;
 	private Map<Object, Object> bodyData;
+	private List<String> pathParameters;
+	private Map<String, String> queryParameters;
 
 	public String getURI() {
 		return URI;
@@ -78,10 +81,26 @@ public class RequestBody {
 		return this;
 	}
 
-	@Override
-	public String toString() {
-		return "RequestBody [URI=" + URI + ", headers=" + headers + ", version=" + version + ", method=" + method
-				+ ", bodyPublisher=" + bodyPublisher + ", bodyData=" + bodyData + "]";
+	public List<String> getPathParameters() {
+		if (this.pathParameters == null)
+			return Collections.emptyList();
+		return pathParameters;
+	}
+
+	public RequestBody setPathParameters(List<String> pathParameters) {
+		this.pathParameters = pathParameters;
+		return this;
+	}
+
+	public Map<String, String> getQueryParameters() {
+		if (this.queryParameters == null)
+			return Collections.emptyMap();
+		return queryParameters;
+	}
+
+	public RequestBody setQueryParameters(Map<String, String> requestParameters) {
+		this.queryParameters = requestParameters;
+		return this;
 	}
 
 	public static HttpRequest.BodyPublisher ofFormData(Map<Object, Object> data) {

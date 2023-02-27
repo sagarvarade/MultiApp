@@ -24,17 +24,34 @@ public class HTTPClientImpl implements HTTPClient {
 
 	HttpClient httpClient = HttpClient.newHttpClient();
 
+	private static String getModifiedURL(RequestBody req){
+		String url=req.getURI();
+		if(!req.getPathParameters().isEmpty())
+		{
+			for(String pathVariable:req.getPathParameters())
+			{
+				url=url+"/"+pathVariable;
+			}
+		}
+		if(!req.getQueryParameters().isEmpty())
+		{
+			url=url+"?";
+			for(Entry<String, String> ent : req.getQueryParameters().entrySet())
+			{
+				url=url+ent.getKey()+"="+ent.getValue()+"&";
+			}
+		}
+		return url;
+	}
 	public ResponseBody get(RequestBody req) {
 		ResponseBody rsp = new ResponseBody();
 		try {
-			Builder bltRequest = HttpRequest.newBuilder().uri(new URI(req.getURI()))
+			Builder bltRequest = HttpRequest.newBuilder().uri(new URI(getModifiedURL(req)))
 					.version(req.getVersion() == null ? Version.HTTP_1_1 : req.getVersion());
 			for (Entry<String, String> ent : req.getHeaders().entrySet()) {
 				bltRequest.header(ent.getKey(), ent.getValue());
 			}
-
 			HttpRequest request = bltRequest.method(req.getMethod(), ofFormData(req.getBodyData())).build();
-
 			HttpResponse<String> resp = httpClient.send(request, BodyHandlers.ofString());
 			rsp.setBody(resp.body()).setClazz(resp.getClass()).setHashcode(resp.hashCode()).setHeaders(resp.headers())
 					.setStatuscode(resp.statusCode()).setRespToString(resp.toString()).setUri(resp.uri())

@@ -14,7 +14,11 @@ import com.authentication.entity.UserInfo;
 public class UserInfoUserDetails implements UserDetails {
 
 
-    private String name;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -232659121356165014L;
+	private String name;
     private String password;
     private List<GrantedAuthority> authorities;
 

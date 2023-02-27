@@ -9,6 +9,6 @@ start /b "4" java -jar deployDirectory/SpringApp1-4.1.1.jar
 timeout 5 > NUL 
 start /b "5" java -jar deployDirectory/SpringApp2-5.1.1.jar
 timeout 5 > NUL 
-start /b "7" java -jar deployDirectory/authentication-7.1.1.jar
+start /b "6" java -jar deployDirectory/authentication-6.1.1.jar
 timeout 5 > NUL 
 pause

@@ -16,12 +16,39 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.HTTPClient.Entity.RequestBody;
 import com.HTTPClient.Entity.ResponseBody;
 import com.HTTPClient.Interfaces.HTTPClient;
 
 public class HTTPClientImpl implements HTTPClient {
 
 	HttpClient httpClient = HttpClient.newHttpClient();
+
+	public ResponseBody get(RequestBody req) {
+		ResponseBody rsp = new ResponseBody();
+		try {
+			Builder bltRequest = HttpRequest.newBuilder().uri(new URI(req.getURI()))
+					.version(req.getVersion() == null ? Version.HTTP_1_1 : req.getVersion());
+			for (Entry<String, String> ent : req.getHeaders().entrySet()) {
+				bltRequest.header(ent.getKey(), ent.getValue());
+			}
+
+			HttpRequest request = bltRequest.method(req.getMethod(), ofFormData(req.getBodyData())).build();
+
+			HttpResponse<String> resp = httpClient.send(request, BodyHandlers.ofString());
+			rsp.setBody(resp.body()).setClazz(resp.getClass()).setHashcode(resp.hashCode()).setHeaders(resp.headers())
+					.setStatuscode(resp.statusCode()).setRespToString(resp.toString()).setUri(resp.uri())
+					.setVersion(resp.version());
+			return rsp;
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	public ResponseBody get(String uri, Map<String, String> headers, Version version) {
 		ResponseBody rsp = new ResponseBody();
@@ -94,10 +121,10 @@ public class HTTPClientImpl implements HTTPClient {
 		}
 		return null;
 	}
-	
-	public ResponseBody post(String uri,String body, Map<String, String> headers, Version version) {
+
+	public ResponseBody post(String uri, String body, Map<String, String> headers, Version version) {
 		ResponseBody rsp = new ResponseBody();
-		BodyPublisher br= HttpRequest.BodyPublishers.ofString(body);
+		BodyPublisher br = HttpRequest.BodyPublishers.ofString(body);
 		try {
 			Builder bltRequest = HttpRequest.newBuilder().uri(new URI(uri))
 					.version(version == null ? Version.HTTP_1_1 : version);
@@ -119,10 +146,10 @@ public class HTTPClientImpl implements HTTPClient {
 		}
 		return null;
 	}
-	
-	public ResponseBody put(String uri,String body, Map<String, String> headers, Version version) {
+
+	public ResponseBody put(String uri, String body, Map<String, String> headers, Version version) {
 		ResponseBody rsp = new ResponseBody();
-		BodyPublisher br= HttpRequest.BodyPublishers.ofString(body);
+		BodyPublisher br = HttpRequest.BodyPublishers.ofString(body);
 		try {
 			Builder bltRequest = HttpRequest.newBuilder().uri(new URI(uri))
 					.version(version == null ? Version.HTTP_1_1 : version);
@@ -144,18 +171,17 @@ public class HTTPClientImpl implements HTTPClient {
 		}
 		return null;
 	}
-	
-	
+
 	public static HttpRequest.BodyPublisher ofFormData(Map<Object, Object> data) {
-        StringBuilder builder = new StringBuilder();
-        for (Map.Entry<Object, Object> entry : data.entrySet()) {
-            if (builder.length() > 0) {
-                builder.append("&");
-            }
-            builder.append(URLEncoder.encode(entry.getKey().toString(), StandardCharsets.UTF_8));
-            builder.append("=");
-            builder.append(URLEncoder.encode(entry.getValue().toString(), StandardCharsets.UTF_8));
-        }
-        return HttpRequest.BodyPublishers.ofString(builder.toString());
-    }
+		StringBuilder builder = new StringBuilder();
+		for (Map.Entry<Object, Object> entry : data.entrySet()) {
+			if (builder.length() > 0) {
+				builder.append("&");
+			}
+			builder.append(URLEncoder.encode(entry.getKey().toString(), StandardCharsets.UTF_8));
+			builder.append("=");
+			builder.append(URLEncoder.encode(entry.getValue().toString(), StandardCharsets.UTF_8));
+		}
+		return HttpRequest.BodyPublishers.ofString(builder.toString());
+	}
 }

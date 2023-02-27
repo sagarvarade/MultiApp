@@ -12,7 +12,6 @@
 		<jmockit.version>1.45</jmockit.version>
 		<junit.version>5.6.0</junit.version>
 	</properties>
-	
 	<parent>
 		<groupId>MultiApp</groupId>
 		<artifactId>MultiApp</artifactId>
@@ -20,7 +19,6 @@
 	</parent>
 	<version>${multiappHTTP.version}</version>
 	<dependencies>
-		
 		<dependency>
 			<groupId>org.jmockit</groupId>
 			<artifactId>jmockit</artifactId>
@@ -30,13 +28,11 @@
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
-			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
-			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

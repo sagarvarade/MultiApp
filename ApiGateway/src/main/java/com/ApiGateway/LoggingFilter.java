@@ -3,7 +3,9 @@ package com.ApiGateway;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
+import java.net.http.HttpClient.Version;
 import java.util.Arrays;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +14,8 @@ import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
+
+import com.HTTPClient.Entity.ResponseBody;
 import com.HTTPClient.Implementations.HTTPClientImpl;
 import reactor.core.publisher.Mono;
 
@@ -30,7 +34,8 @@ public class LoggingFilter implements GlobalFilter {
 			throw new RuntimeException("Incorrect authorization structure");
 		}
 
-		int response = httpClient(parts[1]);
+		//int response = httpClient(parts[1]);
+		int response = httpClient2(parts[1]);
 		System.out.println("Response from Auth " + response);
 		if (response != 200) {
 			throw new RuntimeException("Token is not valid " + response);
@@ -55,5 +60,13 @@ public class LoggingFilter implements GlobalFilter {
 		}
 		return 0;
 	}
-
+	public int httpClient2(String token) {
+		try {
+			ResponseBody responseBody = http.get("http://localhost:8200/auth/testtoken", Map.of("Authorization", "Bearer " + token), Version.HTTP_2);
+			return responseBody.getStatuscode();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 }

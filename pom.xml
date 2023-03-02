@@ -16,7 +16,6 @@
 		<module>SpringApp2</module>
 		<module>AppRunner</module>
 		<module>authentication</module>
-		<module>multiappHTTP</module>
 	</modules>
 
 	<parent>

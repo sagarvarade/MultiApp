@@ -14,7 +14,6 @@
 	<properties>
 		<java.version>17</java.version>
 		<spring-cloud.version>2021.0.1</spring-cloud.version>
-		<multiappHTTP.version>8.1.1</multiappHTTP.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -40,10 +39,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>multiappHTTP</groupId>
-			<artifactId>multiappHTTP</artifactId>
-		</dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
@@ -53,11 +48,6 @@
 				<version>${spring-cloud.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
-			</dependency>
-			<dependency>
-				<groupId>multiappHTTP</groupId>
-				<artifactId>multiappHTTP</artifactId>
-				<version>${multiappHTTP.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

@@ -1,4 +1,4 @@
-package com.ApiGateway.util;
+package com.apigateway.util;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

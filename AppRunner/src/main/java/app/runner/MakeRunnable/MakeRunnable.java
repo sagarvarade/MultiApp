@@ -74,7 +74,7 @@ public class MakeRunnable {
 				File fl = itr.next();
 				String fileName = fl.getName();
 				String filePath = fl.getCanonicalPath();
-				if (fileName.endsWith(".jar") && filePath.indexOf("target") > 0 && fileName.indexOf("AppRunner")<0 &&  fileName.indexOf("multiappHTTP")<0)
+				if (fileName.endsWith(".jar") && filePath.indexOf("target") > 0 && fileName.indexOf("AppRunner")<0 )
 				{
 					jarsMap.put(fileName, filePath);
 				}

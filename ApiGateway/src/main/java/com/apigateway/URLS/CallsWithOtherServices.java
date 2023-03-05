@@ -5,6 +5,8 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
+import javax.annotation.PostConstruct;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +19,13 @@ public class CallsWithOtherServices {
 
 	@Autowired
 	private Environment env;
-
-	private final String AUTH_URL = env.getProperty("multiapp.authentication_service_url");
+	
+	private String AUTH_URL;
+	
+	@PostConstruct
+	private void postConstruct() {
+	    this.AUTH_URL = env.getProperty("multiapp.authentication_service_url");
+	}
 
 	public HttpResponse<String> checkToken(String token) {
 		try {

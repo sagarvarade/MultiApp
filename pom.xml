@@ -25,6 +25,7 @@
 		<relativePath />
 	</parent>
 	<properties>
+	 	<spring.parent.version>2.7.9</spring.parent.version>
 		<maven.compiler.source>17</maven.compiler.source>
      	<maven.compiler.target>17</maven.compiler.target>
 		<spring-cloud.version>2022.0.1</spring-cloud.version>
@@ -37,5 +38,7 @@
 		<Authentication.version>6.1.1</Authentication.version>
 		
 		<AppRunner.version>7.1.1</AppRunner.version>
+	
+		
 	</properties>
 </project>

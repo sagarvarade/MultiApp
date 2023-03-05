@@ -22,6 +22,12 @@ public class LoggingFilter implements GlobalFilter {
 	@Override
 	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 		logger.info("Path ,{} ", exchange.getRequest().getPath());
+		
+		if(exchange.getRequest().getPath().toString().indexOf("auth/authenticate")>0)
+		{
+			logger.info("Skiping this URL for authorozation : ,{} ", exchange.getRequest().getPath());
+			return chain.filter(exchange);
+		}
 		String authHeader = exchange.getRequest().getHeaders().get(HttpHeaders.AUTHORIZATION).get(0);
 		String[] parts = authHeader.split(" ");
 		System.out.println("Parts : " + Arrays.toString(parts));

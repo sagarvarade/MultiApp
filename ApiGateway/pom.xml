@@ -49,11 +49,6 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-			<dependency>
-				<groupId>multiappHTTP</groupId>
-				<artifactId>multiappHTTP</artifactId>
-				<version>${multiappHTTP.version}</version>
-			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<build>

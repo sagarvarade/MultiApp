@@ -1,17 +1,18 @@
 package com.apigateway;
 
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.Arrays;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
+
+import com.apigateway.URLS.CallsWithOtherServices;
 
 import reactor.core.publisher.Mono;
 
@@ -19,12 +20,15 @@ import reactor.core.publisher.Mono;
 public class LoggingFilter implements GlobalFilter {
 
 	private Logger logger = LoggerFactory.getLogger(LoggingFilter.class);
+
+	@Autowired
+	private CallsWithOtherServices URLS;
+
 	@Override
 	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 		logger.info("Path ,{} ", exchange.getRequest().getPath());
-		
-		if(exchange.getRequest().getPath().toString().indexOf("auth/authenticate")>0)
-		{
+
+		if (exchange.getRequest().getPath().toString().indexOf("auth/authenticate") > 0) {
 			logger.info("Skiping this URL for authorozation : ,{} ", exchange.getRequest().getPath());
 			return chain.filter(exchange);
 		}
@@ -42,19 +46,11 @@ public class LoggingFilter implements GlobalFilter {
 		}
 		return chain.filter(exchange);
 	}
-	
-	public int httpClient(String string) {
+
+	public int httpClient(String token) {
 		try {
-			HttpRequest request = HttpRequest.newBuilder().uri(new URI("http://localhost:8200/auth/testtoken"))
-					.header("Authorization", "Bearer " + string).GET().build();
-			HttpClient httpClient = HttpClient.newHttpClient();
-			java.net.http.HttpResponse<String> resp = httpClient.send(request,
-					java.net.http.HttpResponse.BodyHandlers.ofString());
-			String body = resp.body();
-			int respCode = resp.statusCode();
-			System.out.println("F!1" +body);
-			System.out.println("F!1 respCode respCode" +body);
-			return respCode;
+			HttpResponse<String> checkToken = URLS.checkToken(token);
+			return checkToken.statusCode();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -26,20 +26,34 @@
 		<relativePath />
 	</parent>
 	<properties>
-	 	<spring.parent.version>2.7.9</spring.parent.version>
+		<spring.parent.version>2.7.9</spring.parent.version>
 		<maven.compiler.source>17</maven.compiler.source>
-     	<maven.compiler.target>17</maven.compiler.target>
+		<maven.compiler.target>17</maven.compiler.target>
 		<spring-cloud.version>2022.0.1</spring-cloud.version>
-		
+
 		<NamingServer.version>1.1.1</NamingServer.version>
 		<ConfigServer.version>2.1.1</ConfigServer.version>
 		<ApiGateway.version>3.1.1</ApiGateway.version>
 		<SpringApp1.version>4.1.1</SpringApp1.version>
 		<SpringApp2.version>5.1.1</SpringApp2.version>
 		<Authentication.version>6.1.1</Authentication.version>
-		
+
 		<AppRunner.version>7.1.1</AppRunner.version>
 		<multiappui.version>8.1.1</multiappui.version>
-	
+
 	</properties>
+	<profiles>
+		<profile>
+			<id>deploy</id>
+			<modules>
+				<module>NamingServer</module>
+				<module>ConfigServer</module>
+				<module>ApiGateway</module>
+				<module>SpringApp1</module>
+				<module>SpringApp2</module>
+				<module>authentication</module>
+				<module>multiappUI</module>
+			</modules>
+		</profile>
+	</profiles>
 </project>

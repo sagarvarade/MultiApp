@@ -7,7 +7,7 @@
 		<artifactId>MultiApp</artifactId>
 		<version>1.0.0</version>
 	</parent>
-	<artifactId>multiappUI</artifactId>
+	<artifactId>multiappui</artifactId>
 	<name>multiappUI</name>
 	<groupId>com.multiappui</groupId>
 	<version>${multiappui.version}</version>
@@ -84,6 +84,16 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<image>
+						<name>multiapp-${project.artifactId}:${project.version}</name>
+					</image>
+					<pullPolicy>IF_NOT_PRESENT</pullPolicy>					
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

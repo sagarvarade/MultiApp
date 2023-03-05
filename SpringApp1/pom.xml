@@ -8,7 +8,7 @@
 		<version>1.0.0</version>
 	</parent>
 	<groupId>com.SpringApp1</groupId>
-	<artifactId>SpringApp1</artifactId>
+	<artifactId>springapp1</artifactId>
 	<name>SpringApp1</name>
 	<version>${SpringApp1.version}</version>
 	<description>Demo project for Spring Boot</description>
@@ -64,6 +64,16 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<image>
+						<name>multiapp-${project.artifactId}:${project.version}</name>
+					</image>
+					<pullPolicy>IF_NOT_PRESENT</pullPolicy>					
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
